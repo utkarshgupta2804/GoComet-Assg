@@ -9,6 +9,10 @@ venv/
 env/
 ENV/
 pip-wheel-metadata/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
 
 # Local configuration and databases
 .env
