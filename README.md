@@ -20,24 +20,9 @@ SQLite creates `backend/auction.db` on startup. The `auctions` table stores sche
 
 ## Run locally
 
-Use Python 3.10+ and Node.js 20.19+ or 22.12+. In one terminal, start the API:
+Use Python 3.10+ and Node.js 20.19+ or 22.12+. In a terminal, enter `backend`, create and activate a virtual environment (`py -3 -m venv .venv`, then `\.venv\Scripts\Activate.ps1` on Windows), install dependencies with `python -m pip install -r requirements-dev.txt`, and launch the API with `uvicorn app.main:app --reload`.
 
-```powershell
-cd backend
-py -3 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements-dev.txt
-uvicorn app.main:app --reload
-```
-
-From the repository root, start the UI in another terminal:
-
-```powershell
-cd frontend
-Copy-Item .env.example .env.local
-npm ci
-npm run dev
-```
+In a second terminal, enter `frontend`, copy `.env.example` to `.env.local`, install packages with `npm ci`, and launch Vite with `npm run dev`.
 
 Open the Vite URL shown in the terminal (normally `http://localhost:5173`). API documentation is at `http://localhost:8000/docs`.
 
@@ -45,21 +30,7 @@ The backend uses `AUCTION_DB` to override the SQLite file path. The frontend use
 
 ## Checks
 
-Run backend checks from `backend`:
-
-```powershell
-python -m unittest discover -s tests -v
-python -m ruff check app tests
-python -m ruff format --check app tests
-```
-
-Run frontend checks from `frontend` after `npm ci`:
-
-```powershell
-npm run format:check
-npm run typecheck
-npm run build
-```
+From `backend`, run `python -m unittest discover -s tests -v`, `python -m ruff check app tests`, and `python -m ruff format --check app tests`. From `frontend` after `npm ci`, run `npm run format:check`, `npm run typecheck`, and `npm run build`.
 
 ## Limitations
 
